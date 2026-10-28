@@ -1,0 +1,9 @@
+{
+  "name": "patagonia-trip",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Roteiro da Patagônia com marcação de etapas compartilhada (Netlify Functions + Netlify Blobs).",
+  "dependencies": {
+    "@netlify/blobs": "^11.1.0"
+  }
+}

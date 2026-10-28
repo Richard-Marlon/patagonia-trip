@@ -220,6 +220,31 @@
   .credits li{margin-bottom:4px; line-height:1.5;}
   .credits a{color:var(--glacier);}
 
+  .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;}
+
+  /* estado de leitura/edição */
+  .status-line{text-align:center; font-family:var(--font-mono); font-size:10.5px; color:var(--glacier); margin-top:4px; letter-spacing:0.03em;}
+  .status-line.is-offline{color:var(--rust);}
+
+  .waypoint:disabled{opacity:0.55; cursor:default;}
+  .done-check.is-disabled{cursor:default;}
+  .done-check.is-disabled input{cursor:default; opacity:0.6;}
+
+  .auth-box{margin-top:18px; display:flex; flex-direction:column; align-items:center; gap:8px;}
+  .auth-link{
+    background:none; border:1px solid var(--stitch); color:var(--forest);
+    font-family:var(--font-mono); font-size:11px; padding:6px 14px;
+    cursor:pointer; border-radius:2px; text-decoration:none; display:inline-block;
+  }
+  .auth-link:hover{border-color:var(--rust); color:var(--rust);}
+  .login-form{display:flex; gap:8px; align-items:center; flex-wrap:wrap; justify-content:center;}
+  .login-form input[type="password"]{
+    font-family:var(--font-mono); font-size:12px; padding:7px 10px;
+    border:1px solid var(--stitch); border-radius:2px; background:var(--paper); color:var(--ink);
+  }
+  .session-info{display:flex; gap:10px; align-items:center; font-family:var(--font-mono); font-size:11.5px; color:var(--forest);}
+  .auth-msg{min-height:14px; font-size:11px; color:var(--rust); margin:0;}
+
   @media (max-width:600px){
     .stage-body{padding:20px 18px;}
     .photo{height:190px;}
@@ -239,6 +264,7 @@
 <div class="trail-wrap">
   <div class="trail" id="trail"></div>
   <div class="progress-summary" id="progressSummary"></div>
+  <div class="status-line" id="statusLine" aria-live="polite"></div>
 </div>
 
 <main>
@@ -253,7 +279,7 @@
       <div class="stage-footer">
         <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Puerto+Natales" target="_blank" rel="noopener">📍 Puerto Natales</a>
         <div class="cost-box"><div class="line"><span>Custo</span><span>a definir</span></div></div>
-        <label class="done-check"><input type="checkbox"> concluído</label>
+        <label class="done-check is-disabled"><input type="checkbox" disabled> concluído</label>
       </div>
     </div>
   </section>
@@ -272,7 +298,7 @@
           <div class="line"><span>Caiaque Lago Grey</span><span>R$ 1.045,00 pp</span></div>
           <div class="line total"><span>Total casal</span><span>R$ 2.590,00</span></div>
         </div>
-        <label class="done-check"><input type="checkbox"> concluído</label>
+        <label class="done-check is-disabled"><input type="checkbox" disabled> concluído</label>
       </div>
     </div>
   </section>
@@ -291,7 +317,7 @@
           <div class="line"><span>Laguna Nimez</span><span>R$ 40,00 pp</span></div>
           <div class="line total"><span>Total casal</span><span>R$ 2.280,00</span></div>
         </div>
-        <label class="done-check"><input type="checkbox"> concluído</label>
+        <label class="done-check is-disabled"><input type="checkbox" disabled> concluído</label>
       </div>
     </div>
   </section>
@@ -311,7 +337,7 @@
           <div class="line"><span>Glaciarium</span><span>R$ 100,00 pp (estimativa)</span></div>
           <div class="line total"><span>Total casal</span><span>R$ 3.850,00</span></div>
         </div>
-        <label class="done-check"><input type="checkbox"> concluído</label>
+        <label class="done-check is-disabled"><input type="checkbox" disabled> concluído</label>
       </div>
     </div>
   </section>
@@ -329,7 +355,7 @@
           <div class="line"><span>Estância</span><span>R$ 1.055,00 pp</span></div>
           <div class="line total"><span>Total casal</span><span>R$ 2.110,00</span></div>
         </div>
-        <label class="done-check"><input type="checkbox"> concluído</label>
+        <label class="done-check is-disabled"><input type="checkbox" disabled> concluído</label>
       </div>
     </div>
   </section>
@@ -347,7 +373,7 @@
           <div class="line"><span>Entrada do parque</span><span>R$ 165,00 pp (ARS 50.000, confirmado)</span></div>
           <div class="line total"><span>Total casal</span><span>R$ 330,00</span></div>
         </div>
-        <label class="done-check"><input type="checkbox"> concluído</label>
+        <label class="done-check is-disabled"><input type="checkbox" disabled> concluído</label>
       </div>
     </div>
   </section>
@@ -366,7 +392,7 @@
           <div class="line"><span>Rafting</span><span>R$ 630,00 pp</span></div>
           <div class="line total"><span>Total casal</span><span>R$ 1.360,00</span></div>
         </div>
-        <label class="done-check"><input type="checkbox"> concluído</label>
+        <label class="done-check is-disabled"><input type="checkbox" disabled> concluído</label>
       </div>
     </div>
   </section>
@@ -381,7 +407,7 @@
       <div class="stage-footer">
         <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Paso+Integración+Austral" target="_blank" rel="noopener">📍 Paso Integración Austral</a>
         <div class="cost-box"><div class="line"><span>Custo</span><span>a definir</span></div></div>
-        <label class="done-check"><input type="checkbox"> concluído</label>
+        <label class="done-check is-disabled"><input type="checkbox" disabled> concluído</label>
       </div>
     </div>
   </section>
@@ -399,7 +425,7 @@
           <div class="line"><span>Ônibus</span><span>R$ 300,00 pp (estimativa)</span></div>
           <div class="line total"><span>Total casal</span><span>R$ 600,00</span></div>
         </div>
-        <label class="done-check"><input type="checkbox"> concluído</label>
+        <label class="done-check is-disabled"><input type="checkbox" disabled> concluído</label>
       </div>
     </div>
   </section>
@@ -418,7 +444,7 @@
           <div class="line"><span>Navegação Beagle</span><span>a cotar</span></div>
           <div class="line total"><span>Total casal</span><span>R$ 264,00</span></div>
         </div>
-        <label class="done-check"><input type="checkbox"> concluído</label>
+        <label class="done-check is-disabled"><input type="checkbox" disabled> concluído</label>
       </div>
     </div>
   </section>
@@ -436,7 +462,7 @@
           <div class="line"><span>Ônibus</span><span>R$ 300,00 pp (ARS 90.000, confirmado)</span></div>
           <div class="line total"><span>Total casal</span><span>R$ 600,00</span></div>
         </div>
-        <label class="done-check"><input type="checkbox"> concluído</label>
+        <label class="done-check is-disabled"><input type="checkbox" disabled> concluído</label>
       </div>
     </div>
   </section>
@@ -454,7 +480,7 @@
           <div class="line"><span>Fuerte Bulnes + Estrecho</span><span>R$ 130,00 pp</span></div>
           <div class="line total"><span>Total casal</span><span>R$ 260,00</span></div>
         </div>
-        <label class="done-check"><input type="checkbox"> concluído</label>
+        <label class="done-check is-disabled"><input type="checkbox" disabled> concluído</label>
       </div>
     </div>
   </section>
@@ -481,7 +507,27 @@
 
 <footer>
   <p>Roteiro Patagônia — toque nos carimbos da trilha no topo para marcar cada etapa como concluída. Atualizado em 27/10/2026.</p>
-  <button class="reset-btn" id="resetBtn" type="button">Zerar marcações</button>
+
+  <div class="auth-box" id="authBox">
+    <button type="button" class="auth-link" id="authOpenBtn">Entrar para editar</button>
+
+    <form class="login-form" id="loginForm" hidden>
+      <label for="loginSenha" class="sr-only">Senha</label>
+      <input type="password" id="loginSenha" name="senha" placeholder="Senha" autocomplete="current-password" required>
+      <button type="submit" class="auth-link">Entrar</button>
+      <button type="button" class="auth-link" id="loginCancelBtn">Cancelar</button>
+    </form>
+
+    <div class="session-info" id="sessionInfo" hidden>
+      <span id="sessionLabel"></span>
+      <button type="button" class="auth-link" id="logoutBtn">Sair</button>
+    </div>
+
+    <p class="auth-msg" id="authMsg" aria-live="polite"></p>
+
+    <button class="reset-btn" id="resetBtn" type="button" hidden>Zerar marcações</button>
+  </div>
+
   <div class="credits">
     <p class="credits-title">Créditos das fotos (Wikimedia Commons)</p>
     <ul>
@@ -502,7 +548,9 @@
 </footer>
 
 <script>
-  const STORAGE_KEY = "patagonia2027-etapas";
+  const CACHE_KEY = "patagonia2027-etapas";   // agora é só um cache local, não a fonte de verdade
+  const SESSION_KEY = "patagonia2027-sessao";
+  const ROLE_NAMES = { admin: "Richard", editor: "Jessika" };
 
   const stages = [
     {id:1, label:"Pto. Natales"},
@@ -518,100 +566,321 @@
     {id:11, label:"— Pta. Arenas"},
     {id:12, label:"Volta"}
   ];
+  const apiId = (numId) => String(numId).padStart(2, '0');
 
-  function loadState(){
+  let etapas = {};     // { "01": {feito, por, em}, ... } — vem do servidor
+  let session = null;  // { token, role, nome }
+  let online = false;
+  let loaded = false;
+
+  // ---------- sessão (localStorage só guarda o token, nunca senhas) ----------
+  function loadSession(){
     try{
-      const raw = localStorage.getItem(STORAGE_KEY);
-      return raw ? JSON.parse(raw) : {};
-    }catch(e){
-      return {};
-    }
+      const raw = localStorage.getItem(SESSION_KEY);
+      return raw ? JSON.parse(raw) : null;
+    }catch(e){ return null; }
   }
-  function saveState(state){
-    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
+  function saveSession(s){
+    try{ localStorage.setItem(SESSION_KEY, JSON.stringify(s)); }catch(e){}
+  }
+  function clearSession(){
+    try{ localStorage.removeItem(SESSION_KEY); }catch(e){}
   }
 
-  const state = loadState();
+  // ---------- cache local das etapas (só para quando a API falhar) ----------
+  function loadCache(){
+    try{
+      const raw = localStorage.getItem(CACHE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    }catch(e){ return null; }
+  }
+  function saveCache(data){
+    try{ localStorage.setItem(CACHE_KEY, JSON.stringify(data)); }catch(e){}
+  }
+
+  session = loadSession();
+
+  // ---------- trilha ----------
   const trail = document.getElementById('trail');
-
   stages.forEach(s => {
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'waypoint';
     btn.id = 'wp' + s.id;
+    btn.disabled = true;
     btn.addEventListener('click', () => requestToggle(s.id));
     btn.innerHTML = `<span class="stampdot"><span>${s.id}</span></span><span class="wlabel">${s.label}</span>`;
     trail.appendChild(btn);
   });
 
-  function applyState(id){
-    const done = !!state[id];
-    const wp = document.getElementById('wp' + id);
+  function applyState(numId){
+    const key = apiId(numId);
+    const entry = etapas[key] || { feito: false };
+    const done = !!entry.feito;
+    const canEdit = !!session;
+
+    const wp = document.getElementById('wp' + numId);
     if (wp){
       wp.classList.toggle('done', done);
       wp.setAttribute('aria-pressed', done ? 'true' : 'false');
+      wp.disabled = !canEdit;
     }
-    const checkbox = document.querySelector(`#s${id} .done-check input`);
-    if (checkbox) checkbox.checked = done;
+    const section = document.getElementById('s' + numId);
+    const checkbox = section ? section.querySelector('.done-check input') : null;
+    const label = section ? section.querySelector('.done-check') : null;
+    if (checkbox){
+      checkbox.checked = done;
+      checkbox.disabled = !canEdit;
+    }
+    if (label) label.classList.toggle('is-disabled', !canEdit);
+  }
+
+  function renderAll(){
+    stages.forEach(s => applyState(s.id));
+    renderSummary();
+    renderStatusLine();
+    renderResetButton();
   }
 
   function renderSummary(){
-    const done = stages.filter(s => state[s.id]).length;
-    document.getElementById('progressSummary').textContent = `${done} / ${stages.length} etapas concluídas`;
+    const done = stages.filter(s => etapas[apiId(s.id)] && etapas[apiId(s.id)].feito).length;
+    document.getElementById('progressSummary').textContent = loaded
+      ? `${done} / ${stages.length} etapas concluídas`
+      : 'Carregando…';
   }
 
-  function requestToggle(id){
-    const isDone = !!state[id];
-    if (isDone){
-      if (!confirm('Desmarcar esta etapa?')) return;
-      state[id] = false;
+  function renderStatusLine(){
+    const el = document.getElementById('statusLine');
+    el.classList.toggle('is-offline', !online);
+    if (!online){
+      el.textContent = loaded ? '⚠ Offline — mostrando a última cópia salva neste aparelho.' : '⚠ Não foi possível carregar. Tentando de novo…';
+    } else if (session){
+      el.textContent = `Editando como ${session.nome}`;
     } else {
-      state[id] = true;
+      el.textContent = 'Somente leitura';
     }
-    saveState(state);
-    applyState(id);
+  }
+
+  function renderResetButton(){
+    const resetBtn = document.getElementById('resetBtn');
+    resetBtn.hidden = !(session && session.role === 'admin');
+  }
+
+  function renderAuthUI(){
+    const authOpenBtn = document.getElementById('authOpenBtn');
+    const loginForm = document.getElementById('loginForm');
+    const sessionInfo = document.getElementById('sessionInfo');
+    const sessionLabel = document.getElementById('sessionLabel');
+
+    if (session){
+      authOpenBtn.hidden = true;
+      loginForm.hidden = true;
+      sessionInfo.hidden = false;
+      sessionLabel.textContent = `Editando como ${session.nome}`;
+    } else {
+      sessionInfo.hidden = true;
+      loginForm.hidden = true;
+      authOpenBtn.hidden = false;
+    }
+    renderResetButton();
+  }
+
+  function showAuthMsg(text){
+    document.getElementById('authMsg').textContent = text || '';
+  }
+
+  let statusFlashTimer = null;
+  function flashStatus(text){
+    const el = document.getElementById('statusLine');
+    clearTimeout(statusFlashTimer);
+    el.textContent = text;
+    statusFlashTimer = setTimeout(renderStatusLine, 3000);
+  }
+
+  // ---------- comunicação com a API ----------
+  async function fetchEtapas(){
+    try{
+      const res = await fetch('/api/etapas', { cache: 'no-store' });
+      if (!res.ok) throw new Error('http ' + res.status);
+      const data = await res.json();
+      etapas = data.etapas || {};
+      online = true;
+      loaded = true;
+      saveCache(etapas);
+    }catch(err){
+      online = false;
+      if (!loaded){
+        const cached = loadCache();
+        if (cached){
+          etapas = cached;
+          loaded = true;
+        }
+      }
+    }
+    renderAll();
+  }
+
+  async function apiPost(id, acao){
+    return fetch('/api/etapas', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + (session ? session.token : ''),
+      },
+      body: JSON.stringify({ id, acao }),
+    });
+  }
+
+  async function requestToggle(numId){
+    if (!session){
+      flashStatus('Somente leitura — entre para editar.');
+      return;
+    }
+    const key = apiId(numId);
+    const current = etapas[key] || { feito: false };
+    const isDone = !!current.feito;
+
+    let acao;
+    if (!isDone){
+      acao = 'marcar';
+    } else {
+      if (session.role !== 'admin'){
+        flashStatus('Apenas o Richard pode desmarcar.');
+        return;
+      }
+      if (!confirm('Desmarcar esta etapa?')) return;
+      acao = 'desmarcar';
+    }
+
+    const previous = etapas[key];
+    etapas[key] = { feito: acao === 'marcar', por: session.role, em: new Date().toISOString() };
+    applyState(numId);
     renderSummary();
+
+    try{
+      const res = await apiPost(key, acao);
+      if (res.status === 401){
+        session = null;
+        clearSession();
+        etapas[key] = previous;
+        applyState(numId);
+        renderSummary();
+        renderAuthUI();
+        flashStatus('Sessão expirada. Entre novamente.');
+        return;
+      }
+      if (!res.ok){
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.erro || ('http ' + res.status));
+      }
+      const data = await res.json();
+      etapas = data.etapas || etapas;
+      saveCache(etapas);
+      renderAll();
+    }catch(err){
+      etapas[key] = previous;
+      applyState(numId);
+      renderSummary();
+      flashStatus(typeof err.message === 'string' ? err.message : 'Não foi possível salvar. Tente novamente.');
+    }
   }
 
   document.querySelectorAll('.done-check input[type="checkbox"]').forEach(input => {
     const section = input.closest('.stage');
-    const id = Number(section.id.replace('s', ''));
-    input.addEventListener('change', () => {
-      const wantsDone = input.checked;
-      const isDone = !!state[id];
-      if (wantsDone === isDone) return;
-      if (isDone && !wantsDone){
-        if (!confirm('Desmarcar esta etapa?')){
-          input.checked = true;
-          return;
-        }
-        state[id] = false;
-      } else {
-        state[id] = true;
-      }
-      saveState(state);
-      applyState(id);
-      renderSummary();
+    const numId = Number(section.id.replace('s', ''));
+    input.addEventListener('click', (e) => {
+      e.preventDefault();
+      requestToggle(numId);
     });
     input.addEventListener('keydown', (e) => {
       if (e.key === 'Enter'){
         e.preventDefault();
-        input.checked = !input.checked;
-        input.dispatchEvent(new Event('change'));
+        requestToggle(numId);
       }
     });
   });
 
-  stages.forEach(s => applyState(s.id));
-  renderSummary();
+  // ---------- login / logout ----------
+  const authOpenBtn = document.getElementById('authOpenBtn');
+  const loginForm = document.getElementById('loginForm');
+  const loginCancelBtn = document.getElementById('loginCancelBtn');
+  const loginSenha = document.getElementById('loginSenha');
+  const logoutBtn = document.getElementById('logoutBtn');
 
+  authOpenBtn.addEventListener('click', () => {
+    authOpenBtn.hidden = true;
+    loginForm.hidden = false;
+    showAuthMsg('');
+    loginSenha.focus();
+  });
+
+  loginCancelBtn.addEventListener('click', () => {
+    loginForm.hidden = true;
+    loginSenha.value = '';
+    showAuthMsg('');
+    renderAuthUI();
+  });
+
+  loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const senha = loginSenha.value;
+    loginSenha.value = '';
+    showAuthMsg('Entrando…');
+    try{
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ senha }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok){
+        showAuthMsg(data.erro || 'Não foi possível entrar.');
+        return;
+      }
+      session = { token: data.token, role: data.role, nome: data.nome || ROLE_NAMES[data.role] || data.role };
+      saveSession(session);
+      showAuthMsg('');
+      renderAuthUI();
+      renderAll();
+    }catch(err){
+      showAuthMsg('Falha de conexão. Tente novamente.');
+    }
+  });
+
+  logoutBtn.addEventListener('click', () => {
+    session = null;
+    clearSession();
+    renderAuthUI();
+    renderAll();
+  });
+
+  // ---------- zerar marcações (admin, confirmação dupla) ----------
   const resetBtn = document.getElementById('resetBtn');
-  resetBtn.addEventListener('click', () => {
-    if (!confirm('Zerar todas as marcações?')) return;
-    stages.forEach(s => { state[s.id] = false; });
-    saveState(state);
-    stages.forEach(s => applyState(s.id));
-    renderSummary();
+  resetBtn.addEventListener('click', async () => {
+    if (!session || session.role !== 'admin') return;
+    if (!confirm('Zerar TODAS as marcações da viagem?')) return;
+    if (!confirm('Tem certeza? Essa ação não pode ser desfeita.')) return;
+
+    const marcadas = stages.filter(s => etapas[apiId(s.id)] && etapas[apiId(s.id)].feito);
+    for (const s of marcadas){
+      try{
+        const res = await apiPost(apiId(s.id), 'desmarcar');
+        if (res.ok){
+          const data = await res.json();
+          etapas = data.etapas || etapas;
+        }
+      }catch(err){ /* segue tentando as próximas; uma atualização futura reconcilia */ }
+    }
+    saveCache(etapas);
+    renderAll();
+  });
+
+  // ---------- inicialização ----------
+  renderAuthUI();
+  fetchEtapas();
+  setInterval(fetchEtapas, 60000);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) fetchEtapas();
   });
 </script>
 
